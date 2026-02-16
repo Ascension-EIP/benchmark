@@ -1,27 +1,27 @@
 name: escalade_flutter_benchmark
 description: "Benchmark Flutter pour appli escalade"
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  
+
   # Navigation
   go_router: ^14.0.0
-  
+
   # Caméra & Vidéo
   camera: ^0.10.5+9
   video_player: ^2.8.2
   path_provider: ^2.1.2
   path: ^1.9.0
-  
+
   # Permissions
   permission_handler: ^11.3.0
-  
+
   # HTTP
   http: ^1.2.0
 

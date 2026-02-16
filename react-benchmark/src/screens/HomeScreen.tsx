@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type RootStackParamList = {
   Home: undefined;
@@ -13,7 +13,10 @@ type RootStackParamList = {
   };
 };
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Home"
+>;
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
@@ -22,10 +25,10 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>🧗 Escalade Benchmark</Text>
       <Text style={styles.subtitle}>React Native - Expo</Text>
-      
+
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Camera')}
+        onPress={() => navigation.navigate("Camera")}
       >
         <Text style={styles.buttonText}>📹 Enregistrer une vidéo</Text>
       </TouchableOpacity>
@@ -42,39 +45,39 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1a1a1a',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#1a1a1a",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#fff",
     marginBottom: 10,
   },
   subtitle: {
     fontSize: 18,
-    color: '#888',
+    color: "#888",
     marginBottom: 60,
   },
   button: {
-    backgroundColor: '#ff4444',
+    backgroundColor: "#ff4444",
     paddingHorizontal: 40,
     paddingVertical: 20,
     borderRadius: 12,
     marginBottom: 40,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   info: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   infoText: {
-    color: '#666',
+    color: "#666",
     fontSize: 14,
     marginVertical: 4,
   },

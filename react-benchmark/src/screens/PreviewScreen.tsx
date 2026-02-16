@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { VideoView, useVideoPlayer } from 'expo-video';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import type { RouteProp } from '@react-navigation/native';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { VideoView, useVideoPlayer } from "expo-video";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import type { RouteProp } from "@react-navigation/native";
 
 type RootStackParamList = {
   Home: undefined;
@@ -14,7 +14,7 @@ type RootStackParamList = {
   };
 };
 
-type PreviewScreenRouteProp = RouteProp<RootStackParamList, 'Preview'>;
+type PreviewScreenRouteProp = RouteProp<RootStackParamList, "Preview">;
 
 export default function PreviewScreen() {
   const route = useRoute<PreviewScreenRouteProp>();
@@ -31,27 +31,27 @@ export default function PreviewScreen() {
 
   const simulateUpload = async () => {
     setIsUploading(true);
-    
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('📤 Upload simulé:');
-      console.log('URI:', videoUri);
-      console.log('Taille:', videoSize, 'MB');
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      console.log("📤 Upload simulé:");
+      console.log("URI:", videoUri);
+      console.log("Taille:", videoSize, "MB");
+
       Alert.alert(
-        'Upload réussi ✅',
+        "Upload réussi ✅",
         `Vidéo de ${videoSize} MB uploadée avec succès!`,
         [
           {
-            text: 'OK',
-            onPress: () => navigation.navigate('Home' as never),
+            text: "OK",
+            onPress: () => navigation.navigate("Home" as never),
           },
-        ]
+        ],
       );
     } catch (error) {
-      console.error('Erreur upload:', error);
-      Alert.alert('Erreur', 'Échec de l\'upload');
+      console.error("Erreur upload:", error);
+      Alert.alert("Erreur", "Échec de l'upload");
     } finally {
       setIsUploading(false);
     }
@@ -78,7 +78,7 @@ export default function PreviewScreen() {
         <View style={styles.infoRow}>
           <Text style={styles.infoLabel}>URI :</Text>
           <Text style={styles.infoValue} numberOfLines={1}>
-            {videoUri.split('/').pop()}
+            {videoUri.split("/").pop()}
           </Text>
         </View>
       </View>
@@ -90,7 +90,7 @@ export default function PreviewScreen() {
           disabled={isUploading}
         >
           <Text style={styles.buttonText}>
-            {isUploading ? '⏳ Upload en cours...' : '📤 Simuler upload'}
+            {isUploading ? "⏳ Upload en cours..." : "📤 Simuler upload"}
           </Text>
         </TouchableOpacity>
 
@@ -103,7 +103,7 @@ export default function PreviewScreen() {
 
         <TouchableOpacity
           style={[styles.button, styles.homeButton]}
-          onPress={() => navigation.navigate('Home' as never)}
+          onPress={() => navigation.navigate("Home" as never)}
         >
           <Text style={styles.buttonText}>🏠 Accueil</Text>
         </TouchableOpacity>
@@ -115,33 +115,33 @@ export default function PreviewScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: "#000",
   },
   video: {
-    width: '100%',
+    width: "100%",
     height: 300,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: "#1a1a1a",
   },
   infoContainer: {
-    backgroundColor: '#1a1a1a',
+    backgroundColor: "#1a1a1a",
     padding: 20,
     margin: 20,
     borderRadius: 12,
   },
   infoRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginVertical: 8,
   },
   infoLabel: {
-    color: '#888',
+    color: "#888",
     fontSize: 16,
   },
   infoValue: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: '600',
-    maxWidth: '60%',
+    fontWeight: "600",
+    maxWidth: "60%",
   },
   buttonContainer: {
     padding: 20,
@@ -150,20 +150,20 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 12,
     marginVertical: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   uploadButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: "#4CAF50",
   },
   retryButton: {
-    backgroundColor: '#ff4444',
+    backgroundColor: "#ff4444",
   },
   homeButton: {
-    backgroundColor: '#333',
+    backgroundColor: "#333",
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });

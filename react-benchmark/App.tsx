@@ -1,8 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './src/screens/HomeScreen';
-import CameraScreen from './src/screens/CameraScreen';
-import PreviewScreen from './src/screens/PreviewScreen';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import CameraScreen from "./src/screens/CameraScreen";
+import PreviewScreen from "./src/screens/PreviewScreen";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,34 +17,34 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  console.log('🚀 APP LOADED - NAVIGATION ACTIVE');
+  console.log("🚀 APP LOADED - NAVIGATION ACTIVE");
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerStyle: { backgroundColor: '#1a1a1a' },
-          headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: 'bold' },
+          headerStyle: { backgroundColor: "#1a1a1a" },
+          headerTintColor: "#fff",
+          headerTitleStyle: { fontWeight: "bold" },
         }}
       >
-        <Stack.Screen 
-          name="Home" 
+        <Stack.Screen
+          name="Home"
           component={HomeScreen}
-          options={{ title: 'Escalade Benchmark' }}
+          options={{ title: "Escalade Benchmark" }}
         />
-        <Stack.Screen 
-          name="Camera" 
+        <Stack.Screen
+          name="Camera"
           component={CameraScreen}
-          options={{ 
+          options={{
             headerShown: false,
-            animation: 'fade',
+            animation: "fade",
           }}
         />
-        <Stack.Screen 
-          name="Preview" 
+        <Stack.Screen
+          name="Preview"
           component={PreviewScreen}
-          options={{ title: 'Aperçu vidéo' }}
+          options={{ title: "Aperçu vidéo" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
