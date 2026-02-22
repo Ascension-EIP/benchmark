@@ -7,6 +7,7 @@ import (
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/db"
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/repo"
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/service/auth"
+	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/service/upload"
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/service/user"
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/transport/http/router"
 )
@@ -22,6 +23,6 @@ func Run(cfg *config.Config) {
 	authService := auth.New(repo, cfg.Auth)
 	uploadService := upload.New(repo)
 
-	r := router.New(userService, authService, uploadService)
+	r := router.New(cfg, userService, authService, uploadService)
 	log.Fatal(r.Run())
 }

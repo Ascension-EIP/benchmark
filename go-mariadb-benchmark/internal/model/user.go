@@ -6,6 +6,7 @@ type User struct {
 	ID        uint      `json:"id" gorm:"primaryKey"`
 	Username  string    `json:"username" gorm:"uniqueIndex;not null"`
 	Password  string    `json:"password" gorm:"not null"`
+	Files     []Upload  `json:"files" gorm:"foreignKey:UserID;constraint:onDelete:CASCADE"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }

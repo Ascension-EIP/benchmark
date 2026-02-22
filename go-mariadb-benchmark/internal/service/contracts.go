@@ -22,6 +22,6 @@ type (
 	}
 
 	Upload interface {
-		Upload(c context.Context, req request.Upload) error
+		Upload(c context.Context, userID uint, req request.Upload) error
 	}
 )

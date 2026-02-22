@@ -54,9 +54,12 @@ func (s *Service) Login(c context.Context, req request.Login) (string, error) {
 		return "", err
 	}
 
-	claims := jwt.MapClaims{
-		"userId": user.ID,
-		"exp":    time.Now().Add(s.cfg.JWTExp).Unix(),
+	claims := model.JWTClaims{
+		UserID: user.ID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(s.cfg.JWTExp)),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenSigned, err := token.SignedString(s.cfg.JWTKey)
