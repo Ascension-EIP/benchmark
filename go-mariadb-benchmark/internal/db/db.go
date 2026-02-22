@@ -3,6 +3,7 @@ package db
 import (
 	"time"
 
+	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -20,6 +21,10 @@ func New(dsn string) (*gorm.DB, error) {
 	sqlDB.SetMaxOpenConns(25)
 	sqlDB.SetMaxIdleConns(25)
 	sqlDB.SetConnMaxLifetime(time.Hour)
+
+	if err := db.AutoMigrate(&model.User{}); err != nil {
+		return nil, err
+	}
 
 	return db, nil
 }

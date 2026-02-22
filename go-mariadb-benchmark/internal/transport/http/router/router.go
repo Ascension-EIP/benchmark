@@ -1,23 +1,23 @@
 package router
 
 import (
+	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/service"
 	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/transport/http/handler"
-	"github.com/Ascension-EIP/benchmark/go-mariadb-benchmark/internal/transport/http/middleware"
 	"github.com/gin-gonic/gin"
 )
 
 func New(
-	userHandler *handler.UserHandler,
+	user service.User,
+	auth service.Auth,
+	upload service.Upload,
 ) *gin.Engine {
-	r := gin.New()
+	r := gin.Default()
 
-	users := r.Group("/users")
+	v1 := r.Group("/v1")
 	{
-		users.POST("/", middleware.Admin(), userHandler.Create)
-		users.GET("/", middleware.Admin(), userHandler.List)
-		users.GET("/:id", middleware.Admin(), userHandler.GetByID)
-		users.PUT("/:id", middleware.Admin(), userHandler.Update)
-		users.DELETE("/:id", middleware.Admin(), userHandler.Delete)
+		handler.NewUsersRoutes(v1, user)
+		handler.NewAuthRoutes(v1, auth)
+		handler.NewUploadRoutes(v1, upload)
 	}
 
 	return r
