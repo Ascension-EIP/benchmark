@@ -62,7 +62,7 @@ func (s *Service) Login(c context.Context, req request.Login) (string, error) {
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenSigned, err := token.SignedString(s.cfg.JWTKey)
+	tokenSigned, err := token.SignedString([]byte(s.cfg.JWTKey))
 	if err != nil {
 		return "", err
 	}

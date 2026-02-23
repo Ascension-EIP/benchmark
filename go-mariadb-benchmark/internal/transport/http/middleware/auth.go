@@ -30,7 +30,7 @@ func Auth(cfg config.AuthConfig) gin.HandlerFunc {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, errors.New("invalid signing method")
 			}
-			return cfg.JWTKey, nil
+			return []byte(cfg.JWTKey), nil
 		})
 		if err != nil || !token.Valid {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
